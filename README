@@ -1,0 +1,12 @@
+This demonstrates a bug that occurs in inherited_resources when you name a model Resource.
+To exercise the bug:
+
+1) bundle install
+2) rails s
+3) in a separate window, do a POST:
+
+curl -v -H "Accept: application/json" -H "Content-Type: application/json" \
+     -X POST -d ' {"resource": {"name": "Z087"}}' \
+     http://localhost:3000/resources
+
+4) in the rails log, you should see a "stack level too deep" error
